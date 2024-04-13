@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace QL_NhaSach
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         string connectionstring = @"Data Source=NGOCDZ\SQLEXPRESS02;
                                     Initial Catalog=QL_NhaSach;Integrated Security=True";
@@ -21,7 +21,7 @@ namespace QL_NhaSach
         SqlDataAdapter adt;
         DataTable dt = new DataTable();
         public int[] dem;
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -77,7 +77,7 @@ namespace QL_NhaSach
                                 if(cellValueObject1 == cellValueObject)
                                 {
                                     DataGridViewCell cellToUpdate = dataGridView1.Rows[row.Index].Cells[IndexOfColum];
-                                    cellToUpdate = dem[row]
+                                    //cellToUpdate = dem[row]
                                 }
                             }
                             
