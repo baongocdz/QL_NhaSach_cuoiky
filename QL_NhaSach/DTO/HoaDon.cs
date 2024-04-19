@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace QL_NhaSach.DTO
 {
-    internal class HoaDon
+    public class HoaDon
     {
+        public int MAHOADON { get; set; }
+        public int MANHANVIEN { get; set; }
+        public int MACHITIETHOADON { get; set; }
+        public DateTime NGAY { get; set; }
+
+
     }
 }

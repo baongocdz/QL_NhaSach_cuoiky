@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QL_NhaSach.DTO
 {
-    public class TAIKHOAN
+    public class TaiKhoan
     {
         public int MATAIKHOAN { get; set; }
         public int MALOAI { get; set; }

@@ -50,53 +50,63 @@ namespace QL_NhaSach
 
         //}
 
-        private void btnThem_Click_1(object sender, EventArgs e)
-        {
-            // lmao
-            try
-            {
+        //private void btnThem_Click_1(object sender, EventArgs e)
+        //{
+        //    // lmao
+        //    try
+        //    {
                 
-                int a = int.Parse(txtMASP.Text);
-                bool b = false;
-                con.Open();
-                cmd = new SqlCommand($"DECLARE @A INT = 1; SELECT MASANPHAM, LoaiSanPham,TenSanPham, TacGia,SoLuongCon,DonGia, @A AS SOLUONGMUA FROM dbo.LAY_THONG_TIN_SAN_PHAM({a})", con);
-                adt = new SqlDataAdapter(cmd);
-                adt.Fill(dt);
-                dataGridView1.DataSource = dt;
-                con.Close();
-                int IndexOfColum = 6;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (!row.IsNewRow && row.Index != -1)
-                    {
-                        object cellValueObject = row.Cells["MASANPHAM"].Value;
-                        foreach (DataGridViewRow row1 in dataGridView1.Rows)
-                        {
-                            if (!row.IsNewRow && row.Index != row1.Index)
-                            {
-                                object cellValueObject1 = row1.Cells["MASANPHAM"].Value;
-                                if(cellValueObject1 == cellValueObject)
-                                {
-                                    DataGridViewCell cellToUpdate = dataGridView1.Rows[row.Index].Cells[IndexOfColum];
-                                    //cellToUpdate = dem[row]
-                                }
-                            }
+        //        int a = int.Parse(txtMASP.Text);
+        //        bool b = false;
+        //        con.Open();
+        //        cmd = new SqlCommand($"DECLARE @A INT = 1; SELECT MASANPHAM, LoaiSanPham,TenSanPham, TacGia,SoLuongCon,DonGia, @A AS SOLUONGMUA FROM dbo.LAY_THONG_TIN_SAN_PHAM({a})", con);
+        //        adt = new SqlDataAdapter(cmd);
+        //        adt.Fill(dt);
+        //        dataGridView1.DataSource = dt;
+        //        con.Close();
+        //        int IndexOfColum = 6;
+        //        foreach (DataGridViewRow row in dataGridView1.Rows)
+        //        {
+        //            if (!row.IsNewRow && row.Index != -1)
+        //            {
+        //                object cellValueObject = row.Cells["MASANPHAM"].Value;
+        //                foreach (DataGridViewRow row1 in dataGridView1.Rows)
+        //                {
+        //                    if (!row.IsNewRow && row.Index != row1.Index)
+        //                    {
+        //                        object cellValueObject1 = row1.Cells["MASANPHAM"].Value;
+        //                        if(cellValueObject1 == cellValueObject)
+        //                        {
+        //                            DataGridViewCell cellToUpdate = dataGridView1.Rows[row.Index].Cells[IndexOfColum];
+        //                            //cellToUpdate = dem[row]
+        //                        }
+        //                    }
                             
-                        }
+        //                }
                         
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            txtMASP.Text = "";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    txtMASP.Text = "";
 
-        }
+        //}
 
 
         private void txtMASP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thanhtoanToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
