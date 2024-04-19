@@ -30,7 +30,6 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnRetry = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -41,7 +40,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(552, 246);
+            this.label3.Location = new System.Drawing.Point(462, 222);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 20);
             this.label3.TabIndex = 15;
@@ -50,29 +49,19 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnExit.Location = new System.Drawing.Point(618, 359);
+            this.btnExit.Location = new System.Drawing.Point(409, 335);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(119, 62);
             this.btnExit.TabIndex = 14;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnRetry
-            // 
-            this.btnRetry.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnRetry.Location = new System.Drawing.Point(464, 359);
-            this.btnRetry.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Size = new System.Drawing.Size(119, 62);
-            this.btnRetry.TabIndex = 13;
-            this.btnRetry.Text = "Xóa";
-            this.btnRetry.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.Location = new System.Drawing.Point(297, 359);
+            this.btnLogin.Location = new System.Drawing.Point(243, 335);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(119, 62);
@@ -83,7 +72,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(372, 173);
+            this.txtPassword.Location = new System.Drawing.Point(282, 149);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(296, 26);
@@ -91,7 +80,7 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(372, 82);
+            this.txtUsername.Location = new System.Drawing.Point(282, 58);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(296, 26);
@@ -101,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(253, 181);
+            this.label2.Location = new System.Drawing.Point(163, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 24);
             this.label2.TabIndex = 9;
@@ -111,20 +100,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(253, 82);
+            this.label1.Location = new System.Drawing.Point(163, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 24);
             this.label1.TabIndex = 8;
             this.label1.Text = "Tên ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 503);
+            this.ClientSize = new System.Drawing.Size(739, 441);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnRetry);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -132,7 +121,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmLogin";
             this.Text = "Login";
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +130,6 @@
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnRetry;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
