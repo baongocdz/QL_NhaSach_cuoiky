@@ -115,5 +115,7 @@ GO
 
 ALTER DATABASE [QL_NhaSach] SET  READ_WRITE 
 GO
+select *, 
+from QL_NhaSach
 
 
