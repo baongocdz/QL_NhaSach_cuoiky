@@ -9,19 +9,20 @@ namespace QL_NhaSach.DTO
 {
     public class ChiTietHoaDon
     {
-        public int MACHITIETHOADON { get; set; }
-        public int MAHOADON { get; set; }
-        public int MAMATHANG { get; set; }
+        public int MaChiTietHoaDon { get; set; }
+        public int MaHoaDon { get; set; }
+        public int MaMatHang { get; set; }
 
-        public int SOLUONG { get; set; }
-        public float THANHTIEN { get; set; }
+        public int SoLuong { get; set; }
+        public float ThanhTien { get; set; }
         public ChiTietHoaDon() { }
         public ChiTietHoaDon(DataRow row)
         {
-            MACHITIETHOADON = (int)row["MACHITIETHOADON"];
-            MAHOADON = (int)row["MAHOADON"];
-            MAMATHANG = (int)row["MAMATHANG"];
-            //SOLUONG = 
+            MaChiTietHoaDon = (int)row["MACHITIETHOADON"];
+            MaHoaDon = (int)row["MAHOADON"];
+            MaMatHang = (int)row["MAMATHANG"];
+            SoLuong = (int)row["SOLUONG"];
+            ThanhTien = (int)row["THANHTIEN"];
         }
     }
 }

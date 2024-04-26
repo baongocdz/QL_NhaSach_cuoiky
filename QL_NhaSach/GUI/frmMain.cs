@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using QL_NhaSach.GUI;
 
 namespace QL_NhaSach
 {
@@ -108,7 +109,11 @@ namespace QL_NhaSach
 
         private void thanhtoanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmThanhToan frmThanhToan = new frmThanhToan();
+            frmThanhToan.TopLevel = false;
+            panel1.Controls.Clear();
+            panel1.Controls.Add(frmThanhToan);
+            frmThanhToan.Show();
         }
     }
 }

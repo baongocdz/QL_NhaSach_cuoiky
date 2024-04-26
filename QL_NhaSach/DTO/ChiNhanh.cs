@@ -10,20 +10,19 @@ namespace QL_NhaSach.DTO
 {
     public class ChiNhanh
     {
-        public int MACHINHANH {  get; set; }
-        public int MATAIKHOAN { get; set; }
-        public string TEN { get; set; }
-        public string DIACHI { get; set; }
-        public int MAKHO { get; set; }
+        public int MachiNhanh {  get; set; }
+        public int MaTaiKhoan { get; set; }
+        public string Ten { get; set; }
+        public string DiaChi { get; set; }
+
         public ChiNhanh() { }
 
         public ChiNhanh(DataRow row)
         {
-            MACHINHANH = (int)row["MACHINHANH"];
-            MATAIKHOAN = (int)row["MATAIKHOAN"];
-            TEN = row["TEN"].ToString();
-            DIACHI = row["DIACHI"].ToString();
-            MAKHO = (int)row["MAKHO"];
+            MachiNhanh = (int)row["MACHINHANH"];
+            MaTaiKhoan = (int)row["MATAIKHOAN"];
+            Ten = row["TEN"].ToString();
+            DiaChi = row["DIACHI"].ToString();
         }
     }
     

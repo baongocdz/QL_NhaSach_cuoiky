@@ -49,15 +49,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\ClassDal.cs" />
+    <Compile Include="BUS\TaiKhoanBUS.cs" />
+    <Compile Include="DAL\TaiKhoanDAL.cs" />
     <Compile Include="DAL\DataProvider.cs" />
     <Compile Include="DTO\ChiNhanh.cs" />
     <Compile Include="DTO\ChiTietHoaDon.cs" />
+    <Compile Include="DTO\ChiTietNhap.cs" />
     <Compile Include="DTO\ChucVu.cs" />
+    <Compile Include="DTO\DoanhThu.cs" />
     <Compile Include="DTO\HoaDon.cs" />
     <Compile Include="DTO\LoaiTaiKhoan.cs" />
     <Compile Include="DTO\MatHang.cs" />
     <Compile Include="DTO\NhanVien.cs" />
+    <Compile Include="DTO\NhapSach.cs" />
     <Compile Include="DTO\TaiKhoan.cs" />
     <Compile Include="GUI\frmDoanhThu.cs">
       <SubType>Form</SubType>
@@ -154,8 +158,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUS\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
