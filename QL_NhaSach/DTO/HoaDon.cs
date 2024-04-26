@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,16 @@ namespace QL_NhaSach.DTO
 {
     public class HoaDon
     {
-        public int MAHOADON { get; set; }
-        public int MANHANVIEN { get; set; }
-        public int MACHITIETHOADON { get; set; }
-        public DateTime NGAY { get; set; }
-
+        public int MaHoaDon { get; set; }
+        public int MaNhanVien { get; set; }
+        public DateTime Ngay { get; set; }
+        public HoaDon() { }
+        public HoaDon(DataRow row)
+        {
+            MaHoaDon = (int)row["MAHOADON"];
+            MaNhanVien = (int)row["MANHANVIEN"];
+            Ngay = (DateTime)row["NGAY"];
+        }
 
     }
 }
