@@ -56,7 +56,7 @@ namespace QL_NhaSach
         //    // lmao
         //    try
         //    {
-                
+
         //        int a = int.Parse(txtMASP.Text);
         //        bool b = false;
         //        con.Open();
@@ -82,9 +82,9 @@ namespace QL_NhaSach
         //                            //cellToUpdate = dem[row]
         //                        }
         //                    }
-                            
+
         //                }
-                        
+
         //            }
         //        }
         //    }
@@ -106,14 +106,47 @@ namespace QL_NhaSach
         {
 
         }
-
-        private void thanhtoanToolStripMenuItem_Click(object sender, EventArgs e)
+        private Form CurrentFormChild;
+        private void OpenChildForm(Form ChildrenForm)
         {
-            frmThanhToan frmThanhToan = new frmThanhToan();
-            frmThanhToan.TopLevel = false;
-            panel1.Controls.Clear();
-            panel1.Controls.Add(frmThanhToan);
-            frmThanhToan.Show();
+            if (CurrentFormChild != null)
+            {
+                CurrentFormChild.Close();
+            }
+            CurrentFormChild = ChildrenForm;
+            ChildrenForm.TopLevel = false;
+            ChildrenForm.FormBorderStyle = FormBorderStyle.None;
+            ChildrenForm.Dock = DockStyle.Fill;
+            panelMain.Controls.Add(ChildrenForm);
+            panelMain.Tag = ChildrenForm;
+            ChildrenForm.BringToFront();
+            ChildrenForm.Show();
+        }
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmThanhToan());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmSanPham());
+
         }
     }
 }

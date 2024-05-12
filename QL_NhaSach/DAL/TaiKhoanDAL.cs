@@ -27,6 +27,17 @@ namespace QL_NhaSach.DAL
             var result = DataProvider.Instance.ExecuteQuery(query, new object[] { UserName, Password });
             return result.Rows.Count > 0;
         }
+        public bool Regis(String UserName)
+        {
+            var query = $"select * from TAIKHOAN where LOWER(USERNAME) = LOWER('{UserName}')";
+            var result = DataProvider.Instance.ExecuteQuery(query);
+            return result.Rows.Count < 0;
+        }
+
+        //public bool regis(String UserName, String Password, String RePassword)
+        //{
+        //    var query
+        //}
 
     }
 }

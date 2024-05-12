@@ -15,7 +15,7 @@ namespace QL_NhaSach.DTO
         public string TacGia { get; set; }
         public int DonGia { get; set; }
         public int MaMatHang { get; set; }
-        public int ThanhTien { get; set; }
+        public int ThanhTien { get; set; }  
 
         public ChiTietNhap() { }
         public ChiTietNhap(DataRow row) 

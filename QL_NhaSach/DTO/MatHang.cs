@@ -25,5 +25,6 @@ namespace QL_NhaSach.DTO
             DonGia = (int)row["DONGIA"];
             MaChiNhanh = (int)row["MACHINHANH"];
         }
+        
     }
 }

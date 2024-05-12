@@ -21,5 +21,25 @@ namespace QL_NhaSach.GUI
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmNhapSach_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

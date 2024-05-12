@@ -1,4 +1,5 @@
 ﻿using QL_NhaSach.BUS;
+using QL_NhaSach.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,22 +16,31 @@ namespace QL_NhaSach
     public partial class frmLogin : Form
     {
         private readonly TaiKhoanBUS _taiKhoanBUS;
+        public int ma;
+        public static string username;
         public frmLogin()
         {
             InitializeComponent();
             _taiKhoanBUS = new TaiKhoanBUS();   
         }
-
+        int i = 0;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(!_taiKhoanBUS.Login(txtUsername.Text, txtPassword.Text))
             {
+                i++;
                 MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(i <= 2)
+                {
+                    this.Close();
+                }
                 return;
             }
+            username = txtUsername.Text;
             frmMain main = new frmMain();
             main.Show();
             this.Hide();
+            
         }
 
         
@@ -57,6 +67,18 @@ namespace QL_NhaSach
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+              
+        }
+
+        private void btnDangKi_Click(object sender, EventArgs e)
+        {
+            frmDangKy frm = new frmDangKy();
+            frm.Show();
+            this.Hide();
         }
     }
 }
