@@ -12,7 +12,7 @@ namespace QL_NhaSach.BUS
         private readonly HoaDonDAL _hoaDonDAL = new HoaDonDAL(); 
         public int GetMaHD()
         {
-            return _hoaDonDAL.GetMaHD();
+            return _hoaDonDAL.GetMaHD(); //ngoc
         }
     }
 }
