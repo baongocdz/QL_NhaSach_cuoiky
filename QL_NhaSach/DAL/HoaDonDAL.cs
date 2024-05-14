@@ -10,22 +10,24 @@ namespace QL_NhaSach.DAL
 {
     public class HoaDonDAL
     {
-        public DataTable AddHoaDon(int id, int thanhtien)
+        public bool AddHoaDon(HoaDon hoaDon)
         {
-            var query = $"insert into HOADON(MANHANVIEN, THANHTIEN) values({id}, {thanhtien})";
-            return DataProvider.Instance.ExecuteQuery(query) ;
+            var query = $"insert into HOADON(MANHANVIEN, THANHTIEN) values({hoaDon.MaNhanVien}, {hoaDon.ThanhTien})";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
-        public DataTable AddChiTietHoaDon(int idHD, int idMH, int SoLuong, int DonGia) 
+        public bool AddChiTietHoaDon(ChiTietHoaDon CThoadon) 
         {
-            var query = $"insert into CHITIETHOADON(MAHOADON, MAMATHANG, SOLUONG, DONGIA) values('{idHD}', '{idMH}', '{SoLuong}', '{DonGia}')";
-            return DataProvider.Instance.ExecuteQuery (query) ;
+            var query = $"insert into CHITIETHOADON(MACHITIETHOADON, MAHOADON, MAMATHANG, SOLUONG,DONGIA) values({GetMaHD()}, {GetMaHD()}, {CThoadon.MaMatHang}, {CThoadon.SoLuong}, {CThoadon.DonGia})";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
         }
         public int GetMaHD()
         {
             var query = "SELECT MAX(MAHOADON) AS MaxInvoiceID FROM HOADON";
-            object result = DataProvider.Instance.ExecuteQuery(query);
+            object result = DataProvider.Instance.ExecuteScalar(query);
             int maxInvoiceID = Convert.ToInt32(result);
-            return maxInvoiceID + 1;
+            return maxInvoiceID;
         }
     }
 }

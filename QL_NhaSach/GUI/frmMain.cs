@@ -148,5 +148,10 @@ namespace QL_NhaSach
             OpenChildForm(new frmSanPham());
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

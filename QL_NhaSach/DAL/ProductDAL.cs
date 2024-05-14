@@ -27,13 +27,13 @@ namespace QL_NhaSach.DAL
             return result > 0;
         }
 
-        public bool UpdateProduct   (Product data)
+        public bool UpdateProduct (Product data)
         {
             var query = $"UPDATE [QL_NhaSach].[dbo].[MATHANG] SET MACHINHANH = {data.MACHINHANH}, TENMATHANG = '{data.TENMATHANG}', " +
                         $"SOLUONG = {data.SOLUONG}, DONGIA = {data.DONGIA}, NHACUNGCAP = '{data.NHACUNGCAP}'" +
                         $"WHERE MAMATHANG = {data.MAMATHANG}";
 
-            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            var result = DataProvider.Instance.ExecuteNonQuery(query);  
             return result > 0;
         }
 

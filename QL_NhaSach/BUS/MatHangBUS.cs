@@ -42,6 +42,10 @@ namespace QL_NhaSach.BUS
             data = _matHangDAL.GetCotMatHang();
             return data;
         }
+        public bool DecreaseSoLuong(int id, int SoLuong)
+        {
+            return _matHangDAL.DecreaseSoLuong(id, SoLuong);
+        }
 
     }
 }
