@@ -18,8 +18,8 @@ namespace QL_NhaSach.GUI
         List<MatHang> LIST;
         private readonly MatHangBUS _matHangBUS = new MatHangBUS();
         private readonly NhanVienBUS _nhanVienBUS = new NhanVienBUS();  
-        private readonly List<HoaDon> _hoaDon = new List<HoaDon>();
-        private readonly List<ChiTietHoaDon> _chitiethoaDon = new List<ChiTietHoaDon>();
+        private readonly HoaDonBUS _hoaDonBUS = new HoaDonBUS();
+
 
         private int idMH;
         private string tenMH;
@@ -27,6 +27,7 @@ namespace QL_NhaSach.GUI
         private int dongiaMH;
         private int sum;
         private int index;
+        private int maNV;
         DataTable data = new DataTable();
 
         public frmThanhToan()
@@ -75,19 +76,31 @@ namespace QL_NhaSach.GUI
             {
                 if ((int)row["MAMATHANG"] == Id)
                 {
-                    row["SOLUONG"] = (int)row["SOLUONG"] + 1;
-                    check = true;
-                    break;
+                    if((int)row["SOLUONG"] < SoLuong)
+                    {
+                        row["SOLUONG"] = (int)row["SOLUONG"] + 1;
+                        check = true;
+                        break;
+                    }
+;                   check = true;
+                    MessageBox.Show("Hết Hàng.");
+
                 }
             }
             if (check == false)
             {
                 DataRow newrow = data.NewRow();
-                newrow["MAMATHANG"] = Id;
-                newrow["TENMATHANG"] = Ten;
-                newrow["SOLUONG"] = 1;
-                newrow["DONGIA"] = DonGia;
-                data.Rows.Add(newrow);
+                if (SoLuong > 0)
+                {
+                    newrow["MAMATHANG"] = Id;
+                    newrow["TENMATHANG"] = Ten;
+                    newrow["SOLUONG"] = 1;
+                    newrow["DONGIA"] = DonGia;
+                    data.Rows.Add(newrow);
+                }
+                else MessageBox.Show("Hết Hàng.");
+
+
             }
 
 
@@ -146,6 +159,15 @@ namespace QL_NhaSach.GUI
             cbxNhanVien.DataSource = dt;
             cbxNhanVien.DisplayMember = dt.Columns[3].ColumnName;
             cbxNhanVien.ValueMember = dt.Columns[0].ColumnName;
+            if (cbxNhanVien.SelectedItem != null)
+            {
+                String maNVstr = cbxNhanVien.SelectedValue.ToString();
+                int.TryParse(maNVstr, out maNV);
+            }
+            else
+            {
+                MessageBox.Show("Không có nhân viên nào được chọn.");
+            }
         }
         public DataTable GetNhanVien()
         {
@@ -243,6 +265,38 @@ namespace QL_NhaSach.GUI
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            try
+            {
+                HoaDon hoadon = new HoaDon()
+                {
+                    ThanhTien = tinhtien(),
+                    MaNhanVien = maNV,
+                };
+                _hoaDonBUS.AddHoaDon(hoadon);
+                foreach (DataRow row in data.Rows)
+                {
+                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon()
+                    {
+                        MaMatHang = (int)row["MAMATHANG"],
+                        SoLuong = (int)row["SOLUONG"],
+                        DonGia = (int)row["DONGIA"],
+                    };
+                    _hoaDonBUS.AddChiTietHoaDon(chiTietHoaDon);
+                    _matHangBUS.DecreaseSoLuong(chiTietHoaDon.MaMatHang, chiTietHoaDon.SoLuong);
+                }
+                data.Clear();
+                dgvThanhToan.DataSource = null;
+                var data1 = _matHangBUS.GetAllMatHang();
+                dgvMatHang.DataSource = data1;
+                DinhDang();
+                MessageBox.Show("Thanh Toán Thành Công.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thanh Toán Không Thành Công." + ex);
+            }
+
 
         }
 

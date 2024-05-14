@@ -149,7 +149,7 @@ namespace QL_NhaSach
 
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }

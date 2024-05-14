@@ -61,12 +61,13 @@ namespace QL_NhaSach.GUI
         {
             Product product = new Product()
             {
+
                 MAMATHANG = int.Parse(txtMaSanPham.Text),
                 TENMATHANG = txtTenSanPham.Text,
                 //LOAISANPHAM = txtLoaiSanPham.Text,
                 NHACUNGCAP = txtNhaCungCap.Text,
                 SOLUONG = int.Parse(txtSoLuong.Text),
-                DONGIA = int.Parse(txtDonGia.Text),
+                DONGIA = int.Parse(txtDonGia.Text)
             };
             if (_productBUS.UpdateProduct(product))
             {

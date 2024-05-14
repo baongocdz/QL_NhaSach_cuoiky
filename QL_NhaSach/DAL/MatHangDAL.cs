@@ -29,5 +29,11 @@ namespace QL_NhaSach.DAL
             var query = $"select MAMATHANG, TENMATHANG, SOLUONG, DONGIA from MATHANG where 1 = 0";
             return DataProvider.Instance.ExecuteQuery(query);
         }
+        public bool DecreaseSoLuong(int maMH, int SoLuong)
+        {
+            var query = $"update MATHANG set SOLUONG = SOLUONG - {SoLuong} where MAMATHANG = {maMH}";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

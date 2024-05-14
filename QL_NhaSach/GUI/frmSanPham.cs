@@ -95,7 +95,7 @@ namespace QL_NhaSach.GUI
 
                     TENMATHANG = selectedRow.Cells[1].Value.ToString(),
                     MAMATHANG = Convert.ToInt32(selectedRow.Cells[0].Value),
-                    DONGIA = Convert.ToDecimal(selectedRow.Cells[4].Value),
+                    DONGIA = Convert.ToInt32(selectedRow.Cells[4].Value),
                     SOLUONG = Convert.ToInt32(selectedRow.Cells[3].Value),
                     //LOAISANPHAM = selectedRow.Cells[2].Value.ToString(),
                     NHACUNGCAP = selectedRow.Cells[2].Value.ToString(),
