@@ -267,30 +267,33 @@ namespace QL_NhaSach.GUI
         {
             try
             {
-                HoaDon hoadon = new HoaDon()
+                if (data.Rows.Count > 0)
                 {
-                    ThanhTien = tinhtien(),
-                    MaNhanVien = maNV,
-                };
-                _hoaDonBUS.AddHoaDon(hoadon);
-                foreach (DataRow row in data.Rows)
-                {
-                    ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon()
+                    HoaDon hoadon = new HoaDon()
                     {
-                        MaMatHang = (int)row["MAMATHANG"],
-                        SoLuong = (int)row["SOLUONG"],
-                        DonGia = (int)row["DONGIA"],
+                        ThanhTien = tinhtien(),
+                        MaNhanVien = maNV,
                     };
-                    _hoaDonBUS.AddChiTietHoaDon(chiTietHoaDon);
-                    _matHangBUS.DecreaseSoLuong(chiTietHoaDon.MaMatHang, chiTietHoaDon.SoLuong);
+                    _hoaDonBUS.AddHoaDon(hoadon);
+                    foreach (DataRow row in data.Rows)
+                    {
+                        ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon()
+                        {
+                            MaMatHang = (int)row["MAMATHANG"],
+                            SoLuong = (int)row["SOLUONG"],
+                            DonGia = (int)row["DONGIA"],
+                        };
+                        _hoaDonBUS.AddChiTietHoaDon(chiTietHoaDon);
+                        _matHangBUS.DecreaseSoLuong(chiTietHoaDon.MaMatHang, chiTietHoaDon.SoLuong);
+                    }
+                    data.Clear();
+                    dgvThanhToan.DataSource = null;
+                    var data1 = _matHangBUS.GetAllMatHang();
+                    dgvMatHang.DataSource = data1;
+                    DinhDang();
+                    MessageBox.Show("Thanh Toán Thành Công.");
                 }
-                data.Clear();
-                dgvThanhToan.DataSource = null;
-                var data1 = _matHangBUS.GetAllMatHang();
-                dgvMatHang.DataSource = data1;
-                DinhDang();
-                MessageBox.Show("Thanh Toán Thành Công.");
-
+                else MessageBox.Show("Vui Lòng Thêm Vào Các Mặt Hàng.");
             }
             catch (Exception ex)
             {
