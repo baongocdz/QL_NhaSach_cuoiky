@@ -11,16 +11,18 @@ namespace QL_NhaSach.DTO
     {
         public int MaHoaDon { get; set; }
         public int MaNhanVien { get; set; }
-        //public DateTime Ngay { get; set; }
+        public DateTime Ngay { get; set; }
         public int ThanhTien { get; set; }
+        public int MaChiNhanh { get; set; }
+
         public HoaDon() { }
         public HoaDon(DataRow row)
         {
             MaHoaDon = (int)row["MAHOADON"];
             MaNhanVien = (int)row["MANHANVIEN"];
-            //Ngay = (DateTime)row["NGAY"];
+            Ngay = (DateTime)row["NGAY"];
             ThanhTien = (int)row["THANHTIEN"];
-
+            MaChiNhanh = (int)row["MACHINHANH"];
         }
 
     }

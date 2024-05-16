@@ -1,0 +1,91 @@
+
+GO
+/****** Object:  UserDefinedFunction [dbo].[LAY_MASP]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+GO
+/****** Object:  UserDefinedFunction [dbo].[LAY_MASP2]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE FUNCTION [dbo].[LAY_MASP2]
+(
+    @MASP INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT *
+    FROM MATHANG
+    WHERE MAMATHANG = @MASP
+);
+GO
+/****** Object:  UserDefinedFunction [dbo].[LAY_THONG_TIN_SAN_PHAM]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+GO
+/****** Object:  StoredProcedure [dbo].[USP_GetTKbyTen]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[USP_GetTKbyTen]
+	@UserName Nvarchar(50)
+AS
+BEGIN
+	SELECT *
+	FROM TAIKHOAN
+	WHERE @UserName = USERNAME
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[USP_GetTKbyUserName]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[USP_GetTKbyUserName]
+	@UserName Nvarchar(50)
+AS
+BEGIN
+	SELECT *
+	FROM TAIKHOAN
+	where USERNAME = @UserName
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Login]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[USP_Login]
+	@Username Nvarchar(50),
+	@Password Nvarchar(50)
+as
+begin
+	select USERNAME, PASSWORD
+	from TAIKHOAN
+	where USERNAME = @Username and @Password = PASSWORD
+end;
+GO
+/****** Object:  StoredProcedure [dbo].[USP_Search]    Script Date: 2024-05-15 9:44:33 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[USP_Search]
+	@MatHang nvarchar(50)
+as
+begin
+	select MAMATHANG, TENMATHANG, SOLUONG, DONGIA
+	from MATHANG
+	where lower(TENMATHANG) like '%' + lower(@MatHang) + '%'
+end
+GO

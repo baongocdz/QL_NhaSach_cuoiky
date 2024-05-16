@@ -21,10 +21,17 @@ namespace QL_NhaSach.DAL
             var query = "exec USP_GetTKbyUserName @UserName";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { UserName });
         }
+        public int GetMaChiNhanh()
+        {
+            var query = $"select MACHINHANH from TAIKHOAN where USERNAME = '{frmLogin.username}'";
+            object result = DataProvider.Instance.ExecuteScalar(query);
+
+            return Convert.ToInt32(result);
+        }
         public bool Login(String UserName, String Password)
         {
-            var query = "EXEC USP_Login @UserName, @Password";
-            var result = DataProvider.Instance.ExecuteQuery(query, new object[] { UserName, Password });
+            var query = $"select * from TAIKHOAN where LOWER(USERNAME) = LOWER('{UserName}') and PASSWORD = LOWER('{Password}')";
+            var result = DataProvider.Instance.ExecuteQuery(query);
             return result.Rows.Count > 0;
         }
         public bool Regis(String UserName)

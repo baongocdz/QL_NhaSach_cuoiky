@@ -12,7 +12,7 @@ namespace QL_NhaSach.DAL
     {
         public bool AddHoaDon(HoaDon hoaDon)
         {
-            var query = $"insert into HOADON(MANHANVIEN, THANHTIEN) values({hoaDon.MaNhanVien}, {hoaDon.ThanhTien})";
+            var query = $"insert into HOADON(MANHANVIEN, THANHTIEN, MACHINHANH) values({hoaDon.MaNhanVien}, {hoaDon.ThanhTien}, {hoaDon.MaChiNhanh})";
             var result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

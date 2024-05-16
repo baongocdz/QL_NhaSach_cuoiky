@@ -15,6 +15,7 @@ namespace QL_NhaSach.DTO
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
         public int MaChiNhanh { get; set; }
+        public string NhaCungCap { get; set; }
         public MatHang() { }
         public MatHang(DataRow row)
         {
@@ -24,6 +25,7 @@ namespace QL_NhaSach.DTO
             SoLuong = (int)row["SOLUONG"];
             DonGia = (int)row["DONGIA"];
             MaChiNhanh = (int)row["MACHINHANH"];
+            NhaCungCap = (string)row["NHACUNGCAP"];
         }
         
     }

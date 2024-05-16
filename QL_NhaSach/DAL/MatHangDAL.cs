@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QL_NhaSach.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace QL_NhaSach.DAL
 {
     public class MatHangDAL
     {
+        TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();
         public DataTable GetAllMatHang()
         {
-            var query = "select MAMATHANG, TENMATHANG, SOLUONG, DONGIA from MATHANG";
+            var query = $"select MAMATHANG, TENMATHANG, SOLUONG, DONGIA from MATHANG where MACHINHANH = '{_taiKhoanDAL.GetMaChiNhanh()}'";
             return DataProvider.Instance.ExecuteQuery(query);
         }
         public DataTable GetMatHangByTen(String Ten)
@@ -34,6 +36,18 @@ namespace QL_NhaSach.DAL
             var query = $"update MATHANG set SOLUONG = SOLUONG - {SoLuong} where MAMATHANG = {maMH}";
             var result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
+        }
+        public bool AddMatHang(MatHang data)
+        {
+            var query = $"insert into MATHANG(MACHINHANH, TENMATHANG, SOLUONG, DONGIA, NHACUNGCAP) values({data.MaChiNhanh}, N'{data.TenMatHang}', {data.SoLuong}, {data.DonGia}, N'{data.NhaCungCap}')";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public int GetMaMatHangMax()
+        {
+            var query = "select MAX(MAMATHANG) from MATHANG";
+            object result = DataProvider.Instance.ExecuteScalar(query);
+            return Convert.ToInt32(result);
         }
     }
 }

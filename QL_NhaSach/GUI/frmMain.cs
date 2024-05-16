@@ -15,112 +15,55 @@ namespace QL_NhaSach
 {
     public partial class frmMain : Form
     {
-        string connectionstring = @"Data Source=NGOCDZ\SQLEXPRESS02;
-                                    Initial Catalog=QL_NhaSach;Integrated Security=True";
-        SqlConnection con;
-        SqlCommand cmd;
-        SqlDataAdapter adt;
-        DataTable dt = new DataTable();
-        public int[] dem;
-        public frmMain()
-        {
-            InitializeComponent();
-        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(connectionstring);
-        }
-
-        //private void btnThem_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        con.Open();
-        //        cmd = new SqlCommand("select * from TAIKHOAN", con);
-        //        adt = new SqlDataAdapter(cmd);  
-        //        adt.Fill(dt);
-        //        dataGridView1.DataSource = dt;
-        //        con.Close();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-
-
-        //}
-
-        //private void btnThem_Click_1(object sender, EventArgs e)
-        //{
-        //    // lmao
-        //    try
-        //    {
-
-        //        int a = int.Parse(txtMASP.Text);
-        //        bool b = false;
-        //        con.Open();
-        //        cmd = new SqlCommand($"DECLARE @A INT = 1; SELECT MASANPHAM, LoaiSanPham,TenSanPham, TacGia,SoLuongCon,DonGia, @A AS SOLUONGMUA FROM dbo.LAY_THONG_TIN_SAN_PHAM({a})", con);
-        //        adt = new SqlDataAdapter(cmd);
-        //        adt.Fill(dt);
-        //        dataGridView1.DataSource = dt;
-        //        con.Close();
-        //        int IndexOfColum = 6;
-        //        foreach (DataGridViewRow row in dataGridView1.Rows)
-        //        {
-        //            if (!row.IsNewRow && row.Index != -1)
-        //            {
-        //                object cellValueObject = row.Cells["MASANPHAM"].Value;
-        //                foreach (DataGridViewRow row1 in dataGridView1.Rows)
-        //                {
-        //                    if (!row.IsNewRow && row.Index != row1.Index)
-        //                    {
-        //                        object cellValueObject1 = row1.Cells["MASANPHAM"].Value;
-        //                        if(cellValueObject1 == cellValueObject)
-        //                        {
-        //                            DataGridViewCell cellToUpdate = dataGridView1.Rows[row.Index].Cells[IndexOfColum];
-        //                            //cellToUpdate = dem[row]
-        //                        }
-        //                    }
-
-        //                }
-
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    txtMASP.Text = "";
-
-        //}
-
-
-        private void txtMASP_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trangChủToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
         private Form CurrentFormChild;
-        private void OpenChildForm(Form ChildrenForm)
+        //private void OpenChildForm(Form ChildrenForm)
+        //{
+        //    if (CurrentFormChild != null)
+        //    {
+        //        CurrentFormChild.Close();
+        //    }
+        //    CurrentFormChild = ChildrenForm;
+        //    ChildrenForm.TopLevel = false;
+        //    ChildrenForm.FormBorderStyle = FormBorderStyle.None;
+        //    ChildrenForm.Dock = DockStyle.Fill;
+        //    panelMain.Controls.Add(ChildrenForm);
+        //    panelMain.Tag = ChildrenForm;
+        //    ChildrenForm.BringToFront();
+        //    ChildrenForm.Show();
+        //}
+        private Panel panel_Body;
+        private Dictionary<Type, Form> openedForms = new Dictionary<Type, Form>();
+        public frmMain()
         {
-            if (CurrentFormChild != null)
+            InitializeComponent();
+            this.panel_Body = panelMain;
+
+        }
+
+
+        public void openChildForm(Form childForm)
+        {
+            if (!openedForms.ContainsKey(childForm.GetType()))
             {
-                CurrentFormChild.Close();
+                openedForms.Add(childForm.GetType(), childForm);
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panel_Body.Controls.Add(childForm);
             }
-            CurrentFormChild = ChildrenForm;
-            ChildrenForm.TopLevel = false;
-            ChildrenForm.FormBorderStyle = FormBorderStyle.None;
-            ChildrenForm.Dock = DockStyle.Fill;
-            panelMain.Controls.Add(ChildrenForm);
-            panelMain.Tag = ChildrenForm;
-            ChildrenForm.BringToFront();
-            ChildrenForm.Show();
+
+            foreach (var form in openedForms.Values)
+            {
+                form.Hide();
+            }
+
+            openedForms[childForm.GetType()].BringToFront();
+            openedForms[childForm.GetType()].Show();
         }
 
 
@@ -135,22 +78,45 @@ namespace QL_NhaSach
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmThanhToan());
+            openChildForm(new frmThanhToan());
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnNhapSach_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmSanPham());
+            lblText.Text = "Nhập Sách";
+
+            openChildForm(new frmNhapSach());       
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            lblText.Text = "Nhân Viên";
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnDoanhThu_Click(object sender, EventArgs e)
         {
+            lblText.Text = "Doanh Thu";
+
+        }
+
+        private void btnMatHang_Click(object sender, EventArgs e)
+        {
+            lblText.Text = "Sản Phẩm";
+            openChildForm(new frmSanPham());
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            this.panel_Body = panelMain;
 
         }
     }
