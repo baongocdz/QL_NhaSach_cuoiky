@@ -28,6 +28,7 @@ namespace QL_NhaSach.GUI
         private int sum;
         private int index;
         private int maNV;
+        private int maChiNhanh;
         DataTable data = new DataTable();
 
         public frmThanhToan()
@@ -163,6 +164,8 @@ namespace QL_NhaSach.GUI
             {
                 String maNVstr = cbxNhanVien.SelectedValue.ToString();
                 int.TryParse(maNVstr, out maNV);
+                cbxNhanVien.ValueMember = dt.Columns[1].ColumnName;
+                int.TryParse(maNVstr, out maChiNhanh);
             }
             else
             {
@@ -273,6 +276,7 @@ namespace QL_NhaSach.GUI
                     {
                         ThanhTien = tinhtien(),
                         MaNhanVien = maNV,
+                        MaChiNhanh = maChiNhanh,
                     };
                     _hoaDonBUS.AddHoaDon(hoadon);
                     foreach (DataRow row in data.Rows)

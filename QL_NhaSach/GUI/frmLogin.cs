@@ -36,10 +36,14 @@ namespace QL_NhaSach
                 }
                 return;
             }
-            username = txtUsername.Text;
-            frmMain main = new frmMain();
-            main.Show();
-            this.Hide();
+            else
+            {
+                username = txtUsername.Text;
+                frmMain main = new frmMain();
+                main.Show();
+                this.Hide();
+            }
+
             
         }
 

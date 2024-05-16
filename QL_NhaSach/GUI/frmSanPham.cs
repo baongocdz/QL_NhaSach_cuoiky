@@ -18,17 +18,20 @@ namespace QL_NhaSach.GUI
     {
         private readonly ProductBUS _productBUS;
         private ProductDAL data=new ProductDAL();
+        private TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();
 
         public frmSanPham()
         {
             InitializeComponent();
             _productBUS = new ProductBUS();
+            TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();    
         }
 
         private void Products_Load(object sender, EventArgs e)
         {
             // Load danh sách sản phẩm khi form được load
             LoadProductList();
+            int ma = _taiKhoanDAL.GetMaChiNhanh();
         }
 
         private void LoadProductList()

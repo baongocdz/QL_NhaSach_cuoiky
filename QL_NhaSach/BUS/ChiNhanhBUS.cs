@@ -15,5 +15,6 @@ namespace QL_NhaSach.BUS
         {
             return _chiNhanhDAL.GetAllChiNhanh();
         }
+
     }
 }

@@ -8,9 +8,10 @@ namespace QL_NhaSach.DAL
 {
     public class ProductDAL
     {
+        TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();
         public DataTable GetAllProducts()
         {
-            var query = "SELECT * FROM [QL_NhaSach].[dbo].[MATHANG]";
+            var query = $"SELECT * FROM [QL_NhaSach].[dbo].[MATHANG] where MACHINHANH = {_taiKhoanDAL.GetMaChiNhanh()} ";
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
@@ -29,8 +30,8 @@ namespace QL_NhaSach.DAL
 
         public bool UpdateProduct (Product data)
         {
-            var query = $"UPDATE [QL_NhaSach].[dbo].[MATHANG] SET MACHINHANH = {data.MACHINHANH}, TENMATHANG = '{data.TENMATHANG}', " +
-                        $"SOLUONG = {data.SOLUONG}, DONGIA = {data.DONGIA}, NHACUNGCAP = '{data.NHACUNGCAP}'" +
+            var query = $"UPDATE [QL_NhaSach].[dbo].[MATHANG] SET MACHINHANH = {data.MACHINHANH}, TENMATHANG = N'{data.TENMATHANG}', " +
+                        $"SOLUONG = {data.SOLUONG}, DONGIA = {data.DONGIA}, NHACUNGCAP = N'{data.NHACUNGCAP}'" +
                         $"WHERE MAMATHANG = {data.MAMATHANG}";
 
             var result = DataProvider.Instance.ExecuteNonQuery(query);  
