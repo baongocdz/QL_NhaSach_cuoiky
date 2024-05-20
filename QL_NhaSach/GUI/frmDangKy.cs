@@ -21,6 +21,7 @@ namespace QL_NhaSach.GUI
     {
         private readonly ChiNhanhBUS _chinhanhBUS = new ChiNhanhBUS();
         private readonly TaiKhoanBUS _taiKhoanBUS = new TaiKhoanBUS();
+        private readonly EmailBUS emailBUS = new EmailBUS();
         int MaChiNhanh;
         public frmDangKy()
         {
@@ -37,16 +38,16 @@ namespace QL_NhaSach.GUI
             cbxChiNhanh.ValueMember = dt.Columns[0].ColumnName;
             //txtEmail.Text = cbxChiNhanh.ValueMember;
             check();
+            GetOTP();
         }
 
-        Random random = new Random();
-        int ma;
+ 
 
         private void btndangnhap_Click(object sender, EventArgs e)
         {
             frmLogin frm = new frmLogin();
             frm.Show();
-            this.Hide();
+            this.Close();
         }
         private void check()
         {
@@ -95,21 +96,67 @@ namespace QL_NhaSach.GUI
 
         private void btnOTP_Click(object sender, EventArgs e)
         {
-            if(rdoold.Checked)
+            if (rdoold.Checked)
             {
-                _taiKhoanBUS.CheckRegisNewChiNhanh(txtTK.Text, txtMK.Text, txtReMK.Text, txtDiaChi.Text, txtTen.Text, txtEmail.Text);
-                if(_taiKhoanBUS.CheckRegisNewChiNhanh(txtTK.Text, txtMK.Text, txtReMK.Text, txtDiaChi.Text, txtTen.Text, txtEmail.Text))
+                bool a = _taiKhoanBUS.CheckRegisWhenAlreadyHaveChiNhanh(txtTK.Text, txtMK.Text, txtReMK.Text, MaChiNhanh, txtEmail.Text);
+                if (a)
                 {
                     if (_taiKhoanBUS.IsEmailValid(txtEmail.Text))
                     {
-                        MessageBox.Show("Email");
+                        emailBUS.SendEmail(txtEmail.Text, maotp);
 
                     }
                     else MessageBox.Show("Email Không Đúng Định Dạng.");
                 }
             }
+            else if (rdonew.Checked)
+            {
+                bool b = _taiKhoanBUS.CheckRegisNewChiNhanh(txtTK.Text, txtMK.Text, txtReMK.Text, txtDiaChi.Text, txtTen.Text, txtEmail.Text);
+                if (b)
+                {
+                    if (_taiKhoanBUS.IsEmailValid(txtEmail.Text))
+                    {
+                        emailBUS.SendEmail(txtEmail.Text, maotp);
+
+                    }
+                    else MessageBox.Show("email không đúng định dạng.");
+                }
+            }
+            else MessageBox.Show("chon vao thong tin chi nhanh");
+        }
+        private int maotp;
+
+        public void GetOTP()
+        {
+            Random random = new Random();
+            int number = random.Next(100000, 1000000); // Sinh số ngẫu nhiên từ 100000 đến 999999 (bao gồm)
+            maotp = number; 
         }
 
+        private void btnDangKy_Click(object sender, EventArgs e)
+        {
+            if(txtOTP.Text == maotp.ToString())
+            {
+                if(rdonew.Checked)
+                {
+                    _taiKhoanBUS.AddChiNhanh(_taiKhoanBUS.AddMaChiNhanh(), txtTen.Text, txtDiaChi.Text);
+                    _taiKhoanBUS.AddTaiKhoan(txtTK.Text, txtMK.Text, _taiKhoanBUS.AddMaChiNhanh()-1, txtEmail.Text);
+                    MessageBox.Show("tao tai khoan thanh cong.");
+                    this.Hide();
+                    frmDangKy frm = new frmDangKy();
+                    frm.Show();
+                }
+                else if(rdoold.Checked) { }
+                {
+                    _taiKhoanBUS.AddTaiKhoan(txtTK.Text, txtMK.Text, MaChiNhanh, txtEmail.Text);
+                    MessageBox.Show("tao tai khoan thanh cong.");
+                    this.Hide();
+                    frmDangKy frm = new frmDangKy();
+                    frm.Show();
+                }
+            }
+            else MessageBox.Show("Ma OTP khong chinh xac.");
+        }
         //private void btnOTP_Click(object sender, EventArgs e)
         //{
         //    ma = random.Next(100000, 1000000);

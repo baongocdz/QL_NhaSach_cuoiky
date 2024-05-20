@@ -1,4 +1,5 @@
 ﻿using QL_NhaSach.DTO;
+using QL_NhaSach.GUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,22 @@ namespace QL_NhaSach.DAL
 {
     public class HoaDonDAL
     {
+        TaiKhoanDAL TaiKhoanDAL = new TaiKhoanDAL();
+        public DataTable GetAllHoaDon()
+        {
+            var query = $"select * from HOADON where MACHINHANH = {TaiKhoanDAL.GetMaChiNhanh()}";
+            return DataProvider.Instance.ExecuteQuery(query); 
+        }
+        public DataTable GetChiTietHoaDonByMaHD()
+        {
+            var query = $"select * from CHITIETHOADON where MAHOADON = '{frmLichSu.idHD}'"; 
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+        public DataTable GetHoadonByDtp(DateTime data)
+        {
+            var query = $"select * from HOADON where MACHINHANH = {TaiKhoanDAL.GetMaChiNhanh()} and NGAY = '{data.Date}'";
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
         public bool AddHoaDon(HoaDon hoaDon)
         {
             var query = $"insert into HOADON(MANHANVIEN, THANHTIEN, MACHINHANH) values({hoaDon.MaNhanVien}, {hoaDon.ThanhTien}, {hoaDon.MaChiNhanh})";

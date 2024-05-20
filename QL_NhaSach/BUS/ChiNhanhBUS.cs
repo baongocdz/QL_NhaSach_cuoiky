@@ -15,6 +15,10 @@ namespace QL_NhaSach.BUS
         {
             return _chiNhanhDAL.GetAllChiNhanh();
         }
+        public bool CheckChiNhanh(string ten)
+        {
+            return _chiNhanhDAL.CheckChiNhanh(ten);
+        }
 
     }
 }

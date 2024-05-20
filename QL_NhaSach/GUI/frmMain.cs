@@ -119,5 +119,10 @@ namespace QL_NhaSach
             this.panel_Body = panelMain;
 
         }
+
+        private void btnLichSu_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmLichSu());
+        }
     }
 }

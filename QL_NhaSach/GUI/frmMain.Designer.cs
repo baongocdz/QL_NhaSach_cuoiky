@@ -33,16 +33,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnLichSu = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnNhapSach = new System.Windows.Forms.Button();
             this.btnNhanVien = new System.Windows.Forms.Button();
             this.btnMatHang = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            this.guna2CustomGradientPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,25 +50,25 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelMain.Location = new System.Drawing.Point(275, 123);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(752, 514);
+            this.panelMain.Size = new System.Drawing.Size(752, 449);
             this.panelMain.TabIndex = 1;
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Location = new System.Drawing.Point(3, 3);
+            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnThanhToan.Location = new System.Drawing.Point(3, 6);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(266, 57);
             this.btnThanhToan.TabIndex = 3;
             this.btnThanhToan.Text = "Thanh Toán";
-            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panel2.BackColor = System.Drawing.Color.Blue;
             this.panel2.Controls.Add(this.lblText);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.guna2CustomGradientPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -98,11 +97,7 @@
             // 
             // guna2CustomGradientPanel1
             // 
-            this.guna2CustomGradientPanel1.Controls.Add(this.panel1);
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(3, 3);
-            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(141, 114);
-            this.guna2CustomGradientPanel1.TabIndex = 0;
+
             // 
             // panel1
             // 
@@ -117,7 +112,8 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.btnLichSu);
             this.panel3.Controls.Add(this.btnDangXuat);
             this.panel3.Controls.Add(this.btnDoanhThu);
             this.panel3.Controls.Add(this.btnNhapSach);
@@ -127,62 +123,78 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 120);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(272, 517);
+            this.panel3.Size = new System.Drawing.Size(272, 452);
             this.panel3.TabIndex = 5;
+            // 
+            // btnLichSu
+            // 
+            this.btnLichSu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLichSu.Location = new System.Drawing.Point(3, 321);
+            this.btnLichSu.Name = "btnLichSu";
+            this.btnLichSu.Size = new System.Drawing.Size(266, 57);
+            this.btnLichSu.TabIndex = 9;
+            this.btnLichSu.Text = "Lịch Sử Giao Dịch";
+            this.btnLichSu.UseVisualStyleBackColor = false;
+            this.btnLichSu.Click += new System.EventHandler(this.btnLichSu_Click);
             // 
             // btnDangXuat
             // 
-            this.btnDangXuat.Location = new System.Drawing.Point(3, 318);
+            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDangXuat.Location = new System.Drawing.Point(3, 383);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(266, 57);
             this.btnDangXuat.TabIndex = 8;
             this.btnDangXuat.Text = "Đăng Xuất";
-            this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnDoanhThu
             // 
-            this.btnDoanhThu.Location = new System.Drawing.Point(3, 255);
+            this.btnDoanhThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDoanhThu.Location = new System.Drawing.Point(3, 258);
             this.btnDoanhThu.Name = "btnDoanhThu";
             this.btnDoanhThu.Size = new System.Drawing.Size(266, 57);
             this.btnDoanhThu.TabIndex = 7;
             this.btnDoanhThu.Text = "Doanh Thu";
-            this.btnDoanhThu.UseVisualStyleBackColor = true;
+            this.btnDoanhThu.UseVisualStyleBackColor = false;
             this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
             // btnNhapSach
             // 
-            this.btnNhapSach.Location = new System.Drawing.Point(3, 192);
+            this.btnNhapSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnNhapSach.Location = new System.Drawing.Point(3, 195);
             this.btnNhapSach.Name = "btnNhapSach";
             this.btnNhapSach.Size = new System.Drawing.Size(266, 57);
             this.btnNhapSach.TabIndex = 6;
             this.btnNhapSach.Text = "Nhập Sách";
-            this.btnNhapSach.UseVisualStyleBackColor = true;
+            this.btnNhapSach.UseVisualStyleBackColor = false;
             this.btnNhapSach.Click += new System.EventHandler(this.btnNhapSach_Click);
             // 
             // btnNhanVien
             // 
-            this.btnNhanVien.Location = new System.Drawing.Point(3, 129);
+            this.btnNhanVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnNhanVien.Location = new System.Drawing.Point(3, 132);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(266, 57);
             this.btnNhanVien.TabIndex = 5;
             this.btnNhanVien.Text = "Nhân Viên";
-            this.btnNhanVien.UseVisualStyleBackColor = true;
+            this.btnNhanVien.UseVisualStyleBackColor = false;
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
             // 
             // btnMatHang
             // 
-            this.btnMatHang.Location = new System.Drawing.Point(3, 66);
+            this.btnMatHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnMatHang.Location = new System.Drawing.Point(3, 69);
             this.btnMatHang.Name = "btnMatHang";
             this.btnMatHang.Size = new System.Drawing.Size(266, 57);
             this.btnMatHang.TabIndex = 4;
             this.btnMatHang.Text = "Mặt Hàng";
-            this.btnMatHang.UseVisualStyleBackColor = true;
+            this.btnMatHang.UseVisualStyleBackColor = false;
             this.btnMatHang.Click += new System.EventHandler(this.btnMatHang_Click);
             // 
             // frmMain
             // 
-            this.ClientSize = new System.Drawing.Size(1027, 637);
+            this.ClientSize = new System.Drawing.Size(1027, 572);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelMain);
@@ -190,7 +202,6 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -207,9 +218,9 @@
         private System.Windows.Forms.Button btnNhapSach;
         private System.Windows.Forms.Button btnNhanVien;
         private System.Windows.Forms.Button btnMatHang;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblText;
+        private System.Windows.Forms.Button btnLichSu;
     }
 }

@@ -16,5 +16,9 @@ namespace QL_NhaSach.BUS
         {
             return _nhanVienDAL.GetNhanVienByChiNhanh(frmLogin.username);
         }
+        public bool GetAllNhanVien()
+        {
+            return _nhanVienDAL.GetAllNhanVien();
+        }
     }
 }

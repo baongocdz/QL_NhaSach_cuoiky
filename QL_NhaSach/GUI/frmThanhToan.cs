@@ -270,7 +270,7 @@ namespace QL_NhaSach.GUI
         {
             try
             {
-                if (data.Rows.Count > 0)
+                if (data.Rows.Count >= 0)
                 {
                     HoaDon hoadon = new HoaDon()
                     {

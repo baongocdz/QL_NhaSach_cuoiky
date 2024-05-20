@@ -54,20 +54,20 @@ namespace QL_NhaSach.GUI
         }
         private void DinhDang()
         {
-            DataGridViewColumn TENMATHANG = dgvNhapSach.Columns[0];
-            DataGridViewColumn NHACUNGCAP = dgvNhapSach.Columns[1];
-            DataGridViewColumn DONGIA = dgvNhapSach.Columns[2];
-            DataGridViewColumn SOLUONG = dgvNhapSach.Columns[3];
+            DataGridViewColumn TENMATHANG = dgvNhapSach1.Columns[0];
+            DataGridViewColumn NHACUNGCAP = dgvNhapSach1.Columns[1];
+            DataGridViewColumn DONGIA = dgvNhapSach1.Columns[2];
+            DataGridViewColumn SOLUONG = dgvNhapSach1.Columns[3];
 
-            dgvNhapSach.ReadOnly = true;
-            dgvNhapSach.Columns[0].HeaderText = "Tên Mặt Hàng";
-            dgvNhapSach.Columns[0].Width = 150;
-            dgvNhapSach.Columns[1].HeaderText = "Nhà Cung Cấp";
-            dgvNhapSach.Columns[1].Width = 150;
-            dgvNhapSach.Columns[2].HeaderText = "Số Lượng";
-            dgvNhapSach.Columns[2].Width = 80;
-            dgvNhapSach.Columns[3].HeaderText = "Đơn Giá";
-            dgvNhapSach.Columns[3].Width = 80;
+            dgvNhapSach1.ReadOnly = true;
+            dgvNhapSach1.Columns[0].HeaderText = "Tên Mặt Hàng";
+            dgvNhapSach1.Columns[0].Width = 150;
+            dgvNhapSach1.Columns[1].HeaderText = "Nhà Cung Cấp";
+            dgvNhapSach1.Columns[1].Width = 150;
+            dgvNhapSach1.Columns[2].HeaderText = "Số Lượng";
+            dgvNhapSach1.Columns[2].Width = 80;
+            dgvNhapSach1.Columns[3].HeaderText = "Đơn Giá";
+            dgvNhapSach1.Columns[3].Width = 80;
 
             TENMATHANG.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             NHACUNGCAP.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -76,13 +76,13 @@ namespace QL_NhaSach.GUI
         }
         private void dgvNhapSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewSelectedCellCollection cell = dgvNhapSach.SelectedCells;
+            DataGridViewSelectedCellCollection cell = dgvNhapSach1.SelectedCells;
             if (cell.Count > 0)
             {
                 try
                 {
                     index = e.RowIndex;
-                    DataGridViewRow row = dgvNhapSach.Rows[e.RowIndex];
+                    DataGridViewRow row = dgvNhapSach1.Rows[e.RowIndex];
                     if (row.Cells["TENMATHANG"].Value != null &&
                         row.Cells["SOLUONG"].Value != null && row.Cells["DONGIA"].Value != null && row.Cells["NHACUNGCAP"].Value != null)
                     {
@@ -92,7 +92,7 @@ namespace QL_NhaSach.GUI
                         txtDonGia.Text = row.Cells["DONGIA"].Value.ToString();
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("vui long chon vao dong san pham");
                 }
@@ -143,7 +143,7 @@ namespace QL_NhaSach.GUI
                     //    SoLuong = soluongMH,
                     //};
                     AddData(data, nhaCC, tenMH, soluongMH, dongiaMH);
-                    dgvNhapSach.DataSource = data;
+                    dgvNhapSach1.DataSource = data;
                     DinhDang();
                     txtTen.Focus();
                 }

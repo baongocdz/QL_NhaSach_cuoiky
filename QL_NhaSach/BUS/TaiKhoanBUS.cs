@@ -13,8 +13,8 @@ namespace QL_NhaSach.BUS
 {
     public class TaiKhoanBUS
     {
-        private readonly TaiKhoanDAL _taiKhoanDAL;
-        private readonly ChiNhanhDAL _chiNhanhDAL;
+        private readonly TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();
+        private readonly ChiNhanhBUS chiNhanhBUS = new ChiNhanhBUS();
         public TaiKhoanBUS()
         {
             _taiKhoanDAL = new TaiKhoanDAL();
@@ -48,10 +48,10 @@ namespace QL_NhaSach.BUS
             // Kiểm tra chuỗi email có khớp với biểu thức chính quy không
             return Regex.IsMatch(email, pattern);
         }
-        public bool CheckRegisWhenAlreadyHaveChiNhanh(string Username, string Password, string RePassword, string Ten, int MaChiNhanh, string Email)
+        public bool CheckRegisWhenAlreadyHaveChiNhanh(string Username, string Password, string RePassword, int MaChiNhanh, string Email)
         {
-            if(string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password) && string.IsNullOrEmpty(RePassword)
-                && string.IsNullOrEmpty(Ten) && string.IsNullOrEmpty(Email) && MaChiNhanh != null)
+            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(RePassword)
+                 && !string.IsNullOrEmpty(Email) && MaChiNhanh != null)
             {
                 if (_taiKhoanDAL.Regis(Username))
                 {
@@ -66,18 +66,19 @@ namespace QL_NhaSach.BUS
                     return false;
                 }
             }
+            else MessageBox.Show("vui long nhap du.");
             return false;
         }
         public bool CheckRegisNewChiNhanh(string Username, string Password, string RePassword, string DiaChi, string TenChiNhanh, string Email)
         {
-            if (string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password) && string.IsNullOrEmpty(RePassword)
-                && string.IsNullOrEmpty(DiaChi) && string.IsNullOrEmpty(Email) && string.IsNullOrEmpty(TenChiNhanh))
+            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(RePassword)
+                && !string.IsNullOrEmpty(DiaChi) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(TenChiNhanh))
             {
                 if (_taiKhoanDAL.Regis(Username))
                 {
                     if (Password == RePassword)
                     {
-                        if (_chiNhanhDAL.CheckChiNhanh(TenChiNhanh))
+                        if (chiNhanhBUS.CheckChiNhanh(TenChiNhanh))
                         {
                             return true;
                         }
@@ -95,6 +96,18 @@ namespace QL_NhaSach.BUS
                 }
             }
             return false;
+        }
+        public bool AddChiNhanh(int ma, string ten, string diachi)
+        {
+            return _taiKhoanDAL.AddChiNhanh(ma, ten, diachi);
+        }
+        public bool AddTaiKhoan(string username, string password, int machinhanh, string email)
+        {
+            return _taiKhoanDAL.AddTaiKhoan(username, password, machinhanh, email);
+        }
+        public int AddMaChiNhanh() 
+        {
+            return _taiKhoanDAL.AddMaChiNhanh();
         }
     }
 }

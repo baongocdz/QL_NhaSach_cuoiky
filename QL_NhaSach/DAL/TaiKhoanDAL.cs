@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,13 +39,26 @@ namespace QL_NhaSach.DAL
         {
             var query = $"select * from TAIKHOAN where LOWER(USERNAME) = LOWER('{UserName}')";
             var result = DataProvider.Instance.ExecuteQuery(query);
-            return result.Rows.Count < 0;
+            return result.Rows.Count == 0;
+        }
+        public bool AddChiNhanh(int ma, string ten, string diachi)
+        {
+            var query = $"insert into CHINHANH(MACHINHANH, TEN, DIACHI) values({ma}, '{ten}', '{diachi}')";
+            var result = DataProvider.Instance.ExecuteNonQuery(query)
+;           return result > 0;
         }
 
-        //public bool regis(String UserName, String Password, String RePassword)
-        //{
-        //    var query
-        //}
-
+        public bool AddTaiKhoan(string username, string password, int machinhanh, string email)
+        {
+            var query = $"insert into TAIKHOAN(USERNAME, PASSWORD, MACHINHANH, EMAIL) values(N'{username}', N'{password}', {machinhanh}, N'{email}')";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public int AddMaChiNhanh()
+        {
+            var query = "select max(MACHINHANH) from CHINHANH";
+            object result = DataProvider.Instance.ExecuteScalar(query);
+            return Convert.ToInt32(result) + 1;
+        }
     }
 }

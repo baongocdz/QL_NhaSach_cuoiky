@@ -16,5 +16,15 @@ namespace QL_NhaSach.GUI
         {
             InitializeComponent();
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmDoanhThu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

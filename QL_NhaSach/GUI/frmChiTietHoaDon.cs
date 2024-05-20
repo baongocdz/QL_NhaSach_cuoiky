@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QL_NhaSach.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,21 +11,17 @@ using System.Windows.Forms;
 
 namespace QL_NhaSach.GUI
 {
-    public partial class frmNhanVien : Form
+    public partial class frmChiTietHoaDon : Form
     {
-        public frmNhanVien()
+        HoaDonBUS HoaDonBUS = new HoaDonBUS();  
+        public frmChiTietHoaDon()
         {
             InitializeComponent();
         }
 
-        private void btnTim_Click(object sender, EventArgs e)
+        private void frmChiTietHoaDon_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void frmNhanVien_Load(object sender, EventArgs e)
-        {
-
+            dataGridView1.DataSource = HoaDonBUS.GetChiTietHoaDonByMaHD();
         }
     }
 }
