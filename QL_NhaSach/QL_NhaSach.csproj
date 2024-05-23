@@ -90,6 +90,12 @@
     <Compile Include="GUI\frmChiTietHoaDon.Designer.cs">
       <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmChiTietNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmChiTietNhanVien.Designer.cs">
+      <DependentUpon>frmChiTietNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmChiTietSP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </Compile>
     <EmbeddedResource Include="GUI\frmChiTietHoaDon.resx">
       <DependentUpon>frmChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmChiTietNhanVien.resx">
+      <DependentUpon>frmChiTietNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmChiTietSP.resx">
       <DependentUpon>frmChiTietSP.cs</DependentUpon>

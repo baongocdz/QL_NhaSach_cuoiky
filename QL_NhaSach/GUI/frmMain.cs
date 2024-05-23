@@ -95,11 +95,14 @@ namespace QL_NhaSach
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
             lblText.Text = "Nhân Viên";
+            openChildForm(new frmNhanVien());
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
         }
 
         private void btnDoanhThu_Click(object sender, EventArgs e)

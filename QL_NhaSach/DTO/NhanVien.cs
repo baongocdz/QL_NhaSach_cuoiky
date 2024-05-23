@@ -12,19 +12,22 @@ namespace QL_NhaSach.DTO
     {
         public int MaNhanVien {  get; set; }    
         public int MaChiNhanh { get; set; }
-        public String Ten {  get; set; }
+        public string Ten {  get; set; }
         public int MaChucVu { get; set; }
-        public float TongThoiGianLam {  get; set; }
+        public int TongThoiGianLam {  get; set; }
         public DateTime NgayBatDau { get; set; } 
+
+        public string Anh {  get; set; }
         public NhanVien() { }
         public NhanVien(DataRow row)
         {
             MaNhanVien = (int)row["MANHANVIEN"];
             MaChiNhanh = (int)row["MACHINHANH"];
-            Ten = (String)row["TEN"];
-            TongThoiGianLam = (float)row["TONGTHOIGIANLAM"];
+            Ten = (string)row["TEN"];
+            TongThoiGianLam = Convert.ToInt32(row["TONGTHOIGIANLAM"]);
             NgayBatDau = (DateTime)row["NGAYBATDAU"];
             MaChucVu = (int)row["MACHUCVU"];
+            Anh = (string)row["ANH"];
         }
     }
    

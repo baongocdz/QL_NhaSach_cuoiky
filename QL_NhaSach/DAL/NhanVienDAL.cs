@@ -1,5 +1,7 @@
-﻿using QL_NhaSach.BUS;
-using QL_NhaSach.DTO;
+﻿using QL_NhaSach.DTO;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,21 +13,38 @@ namespace QL_NhaSach.DAL
 {
     public class NhanVienDAL
     {
-        TaiKhoanDAL TaiKhoanDAL = new TaiKhoanDAL();
+        TaiKhoanDAL _taiKhoanDAL = new TaiKhoanDAL();
         public DataTable GetNhanVienByChiNhanh(string username)
         {
             var query = $"select MANHANVIEN, t.MACHINHANH, MACHUCVU, n.TEN, TONGTHOIGIANLAM, NGAYBATDAU from NHANVIEN n, TAIKHOAN t where T.USERNAME = '{username}' and t.MACHINHANH = n.MACHINHANH";
             return DataProvider.Instance.ExecuteQuery(query);
         }
-        public bool GetAllNhanVien()
+        public DataTable LayTatCaNhanVien()
         {
-            var query = $"select * from NHANVien WHERE MACHINHANH = {TaiKhoanDAL.GetMaChiNhanh()}";
-            var reuslt = DataProvider.Instance.ExecuteQuery(query);
-            return reuslt.Rows.Count > 0;
+            var query = $"SELECT * FROM [QL_NhaSach].[dbo].[NHANVIEN] where MACHINHANH = '{_taiKhoanDAL.GetMaChiNhanh()}' ";
+            return DataProvider.Instance.ExecuteQuery(query);
         }
-        //public DataTable GetMaNhanVien()
-        //{
-        //    var query = $"select MANHANVIEN from NHANVIEN WHERE"
-        //}
+
+        public DataTable TimKiemNhanVien(string keyword)
+        {
+            string query = "SELECT * FROM [QL_NhaSach].[dbo].[NHANVIEN] WHERE TEN LIKE @Keyword";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { "%" + keyword + "%" });
+        }
+
+        public bool XoaNhanVien(int maNhanVien)
+        {
+            var query = $"DELETE FROM [QL_NhaSach].[dbo].[NHANVIEN] WHERE MANHANVIEN = {maNhanVien}";
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        public bool ThemNhanVien(NhanVien data)
+        {
+            var query = $"INSERT INTO [QL_NhaSach].[dbo].[NHANVIEN] (MACHINHANH, MACHUCVU, TEN, TONGTHOIGIANLAM) " +
+                        $"VALUES ({_taiKhoanDAL.GetMaChiNhanh()}, {data.MaChucVu}, N'{data.Ten}', {data.TongThoiGianLam})";
+
+            var result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

@@ -71,6 +71,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Location = new System.Drawing.Point(251, 119);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(264, 22);

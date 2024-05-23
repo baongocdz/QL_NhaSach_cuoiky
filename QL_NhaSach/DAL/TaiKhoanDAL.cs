@@ -29,6 +29,13 @@ namespace QL_NhaSach.DAL
 
             return Convert.ToInt32(result);
         }
+        public string GetChiNhanh()
+        {
+            var query = $"select TEN from TAIKHOAN where USERNAME = '{frmLogin.username}'";
+            object result = DataProvider.Instance.ExecuteScalar(query);
+
+            return result.ToString();
+        }
         public bool Login(String UserName, String Password)
         {
             var query = $"select * from TAIKHOAN where LOWER(USERNAME) = LOWER('{UserName}') and PASSWORD = LOWER('{Password}')";

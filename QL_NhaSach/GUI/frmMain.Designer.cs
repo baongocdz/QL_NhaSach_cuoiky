@@ -50,7 +50,7 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelMain.Location = new System.Drawing.Point(275, 123);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(752, 449);
+            this.panelMain.Size = new System.Drawing.Size(752, 438);
             this.panelMain.TabIndex = 1;
             // 
             // btnThanhToan
@@ -95,10 +95,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Open Library";
             // 
-            // guna2CustomGradientPanel1
-            // 
-
-            // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::QL_NhaSach.Properties.Resources.Picture3;
@@ -113,17 +109,17 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Controls.Add(this.btnLichSu);
             this.panel3.Controls.Add(this.btnDangXuat);
-            this.panel3.Controls.Add(this.btnDoanhThu);
+            this.panel3.Controls.Add(this.btnMatHang);
+            this.panel3.Controls.Add(this.btnLichSu);
+            this.panel3.Controls.Add(this.btnThanhToan);
             this.panel3.Controls.Add(this.btnNhapSach);
             this.panel3.Controls.Add(this.btnNhanVien);
-            this.panel3.Controls.Add(this.btnMatHang);
-            this.panel3.Controls.Add(this.btnThanhToan);
+            this.panel3.Controls.Add(this.btnDoanhThu);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 120);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(272, 452);
+            this.panel3.Size = new System.Drawing.Size(272, 444);
             this.panel3.TabIndex = 5;
             // 
             // btnLichSu
@@ -140,7 +136,7 @@
             // btnDangXuat
             // 
             this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDangXuat.Location = new System.Drawing.Point(3, 383);
+            this.btnDangXuat.Location = new System.Drawing.Point(3, 384);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(266, 57);
             this.btnDangXuat.TabIndex = 8;
@@ -151,7 +147,7 @@
             // btnDoanhThu
             // 
             this.btnDoanhThu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDoanhThu.Location = new System.Drawing.Point(3, 258);
+            this.btnDoanhThu.Location = new System.Drawing.Point(3, 195);
             this.btnDoanhThu.Name = "btnDoanhThu";
             this.btnDoanhThu.Size = new System.Drawing.Size(266, 57);
             this.btnDoanhThu.TabIndex = 7;
@@ -162,7 +158,7 @@
             // btnNhapSach
             // 
             this.btnNhapSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnNhapSach.Location = new System.Drawing.Point(3, 195);
+            this.btnNhapSach.Location = new System.Drawing.Point(3, 258);
             this.btnNhapSach.Name = "btnNhapSach";
             this.btnNhapSach.Size = new System.Drawing.Size(266, 57);
             this.btnNhapSach.TabIndex = 6;
@@ -194,7 +190,7 @@
             // 
             // frmMain
             // 
-            this.ClientSize = new System.Drawing.Size(1027, 572);
+            this.ClientSize = new System.Drawing.Size(1027, 564);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelMain);

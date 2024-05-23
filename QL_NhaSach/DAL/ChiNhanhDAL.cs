@@ -10,6 +10,7 @@ namespace QL_NhaSach.DAL
 {
     public class ChiNhanhDAL
     {
+        private TaiKhoanDAL taiKhoanDAL = new TaiKhoanDAL();    
         public DataTable GetAllChiNhanh()
         {
             var query = "select * from CHINHANH";
