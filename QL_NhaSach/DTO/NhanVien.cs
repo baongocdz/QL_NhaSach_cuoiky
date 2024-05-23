@@ -10,23 +10,23 @@ namespace QL_NhaSach.DTO
 {
     public class NhanVien
     {
-        public int MaNhanVien {  get; set; }    
-        public int MaChiNhanh { get; set; }
-        public String Ten {  get; set; }
-        public int MaChucVu { get; set; }
-        public float TongThoiGianLam {  get; set; }
-        public DateTime NgayBatDau { get; set; } 
-        public NhanVien() { }
+        public int MANHANVIEN { get; set; }
+        public int MACHINHANH { get; set; }
+        public int MACHUCVU { get; set; }
+        public string TEN { get; set; }
+        public int TONGTHOIGIANLAM { get; set; }
+        public DateTime NGAYBATDAU { get; set; }
+
         public NhanVien(DataRow row)
         {
-            MaNhanVien = (int)row["MANHANVIEN"];
-            MaChiNhanh = (int)row["MACHINHANH"];
-            Ten = (String)row["TEN"];
-            TongThoiGianLam = (float)row["TONGTHOIGIANLAM"];
-            NgayBatDau = (DateTime)row["NGAYBATDAU"];
-            MaChucVu = (int)row["MACHUCVU"];
+            MANHANVIEN = (int)row["MANHANVIEN"];
+            MACHINHANH = (int)row["MACHINHANH"];
+            MACHUCVU = (int)row["MACHUCVU"];
+            TEN = row["TEN"].ToString();
+            TONGTHOIGIANLAM = Convert.ToInt32(row["TONGTHOIGIANLAM"]);
+            NGAYBATDAU = Convert.ToDateTime(row["NGAYBATDAU"]);
         }
-    }
-   
 
+        public NhanVien() { }
+    }
 }

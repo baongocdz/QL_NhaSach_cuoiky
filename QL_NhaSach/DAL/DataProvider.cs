@@ -10,8 +10,7 @@ namespace QL_NhaSach.DAL
 {
     public class DataProvider
     {
-        private string connectionString = @"Data Source=NGOCDZ\SQLEXPRESS02;
-                                    Initial Catalog=QL_NhaSach;Integrated Security=True";
+        private string connectionString = @"Data Source=LAPTOP-AUN38S6M\MSSQLSERVER01;Initial Catalog=QL_NhaSach_test;Integrated Security=True";
 
         private DataProvider()
         {
