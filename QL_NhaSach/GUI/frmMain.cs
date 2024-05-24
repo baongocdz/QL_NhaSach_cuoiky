@@ -83,7 +83,7 @@ namespace QL_NhaSach
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new frmMain());
         }
         private void btnNhapSach_Click(object sender, EventArgs e)
         {
@@ -102,13 +102,13 @@ namespace QL_NhaSach
         {
             this.Close();
             frmLogin frm = new frmLogin();
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
             lblText.Text = "Doanh Thu";
-
+            openChildForm(new frmDoanhThu());
         }
 
         private void btnMatHang_Click(object sender, EventArgs e)
@@ -125,6 +125,7 @@ namespace QL_NhaSach
 
         private void btnLichSu_Click(object sender, EventArgs e)
         {
+            lblText.Text = "Lịch Sử Giao Dịch";
             openChildForm(new frmLichSu());
         }
     }
